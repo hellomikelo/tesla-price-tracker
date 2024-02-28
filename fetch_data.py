@@ -22,7 +22,8 @@ def get_data():
     options.add_argument('user-agent={0}'.format(user_agent))
 
     driver = webdriver.Chrome(options=options) 
-    driver.implicitly_wait(90)
+    # driver.implicitly_wait(90)
+    driver.set_page_load_timeout(90)
 
     # Load the URL and get the page source
     URL = 'https://www.tesla.com/inventory/new/my?TRIM=LRAWD&WHEELS=NINETEEN&CABIN_CONFIG=FIVE&arrangeby=plh&zip=94043&range=0'
@@ -56,6 +57,7 @@ def get_data():
             odometer_str = '0'
         base_features_str = section.find_element(By.CSS_SELECTOR, '#iso-container > div > div.inventory-app-wrapper.tds-scrim--white > main > div > article > section.result-features.features-grid > ul.result-regular-features.tds-list.tds-list--unordered').get_attribute("innerHTML")
         car_type = section.find_element(By.CLASS_NAME, "tds-text_color--10").get_attribute("innerHTML")
+        
 
         # Parse raw HTML
         purchase_price = int(purchase_price_str.replace('$', '').replace(',', ''))
