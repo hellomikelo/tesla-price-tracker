@@ -21,7 +21,7 @@ def get_data():
     options.add_argument('user-agent={0}'.format(user_agent))
 
     driver = webdriver.Chrome(options=options) 
-    driver.set_page_load_timeout(90)
+    driver.implicitly_wait(90)
 
     # Load the URL and get the page source
     URL = 'https://www.tesla.com/inventory/new/my?TRIM=LRAWD&WHEELS=NINETEEN&CABIN_CONFIG=FIVE&arrangeby=plh&zip=94043&range=0'
@@ -32,6 +32,8 @@ def get_data():
     )
 
     sections = results_container.find_elements(By.CSS_SELECTOR, "#iso-container > div > div.inventory-app-wrapper.tds-scrim--white > main > div > article")
+
+    assert len(sections) != 0, "No sections found! Please check."
 
     # Parse section for car info
     car_info = []
