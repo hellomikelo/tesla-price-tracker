@@ -53,9 +53,9 @@ def send_to_discord(file_path):
         
         # Add fields to the embed
         for _res in res: 
-            if _res['purchase_price'] == min_price:
-                value_str = f"**After tax credit:** ${_res['after_tax_credit_price']:,}\n**Odometer:** {_res['odometer']} miles\n**Base features:** {_res['base_features']}\n**URL:** {_res['url']}"
-                embed.add_field(name=f"🚗 ${_res['price_adjustment']:,} ({_res['pct_discount']}%) adjustment", value=value_str, inline=False)
+            # if _res['purchase_price'] == min_price:
+            value_str = f"**After tax credit:** ${_res['after_tax_credit_price']:,}\n**Odometer:** {_res['odometer']} miles\n**Base features:** {_res['base_features']}\n**URL:** {_res['url']}"
+            embed.add_field(name=f"🚗 ${_res['price_adjustment']:,} ({_res['pct_discount']}%) adjustment", value=value_str, inline=False)
         
         await channel.send(embed=embed)
         await bot.close()

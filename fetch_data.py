@@ -85,10 +85,16 @@ def get_data():
     min_price = min(car_info, key=lambda x: x['purchase_price'])['purchase_price']
     [print(x) for x in car_info if x['purchase_price'] == min_price]
 
+    # Select only the cheapest cars
+    cheapest = []
+    for car in car_info:
+        if car['purchase_price'] == min_price:
+            cheapest.append(car)
+
     # Write out results
     with open("latest_prices.json", "w") as f:
         # Dump the list to the file
-        json.dump(car_info, f)
+        json.dump(cheapest, f)
 
 if __name__ == '__main__':
     get_data()
