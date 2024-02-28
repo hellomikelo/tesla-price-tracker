@@ -7,6 +7,7 @@ import os
 import re
 import json
 import selenium
+import time
 
 def get_data():
     # Initialize Chrome Selenium
@@ -30,8 +31,9 @@ def get_data():
     results_container = WebDriverWait(driver, 100).until(
         EC.presence_of_element_located((By.CLASS_NAME, "results-container"))
     )
-
+    
     sections = results_container.find_elements(By.CSS_SELECTOR, "#iso-container > div > div.inventory-app-wrapper.tds-scrim--white > main > div > article")
+    time.sleep(1) 
 
     assert len(sections) != 0, "No sections found! Please check."
 
