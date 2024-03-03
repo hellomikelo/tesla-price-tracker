@@ -44,7 +44,7 @@ def send_to_discord(file_path):
     @bot.event
     async def on_ready():
         print(f'Logged in as {bot.user.name} ({bot.user.id})')
-        channel = bot.get_channel(1084864988688154627) 
+        channel = bot.get_channel(1213971743207592047) 
         embed = discord.Embed(
             title='🚘 Lowest Tesla MYLR price update!',
             description=f'Lowest purchase price is **${min_price:,}**',

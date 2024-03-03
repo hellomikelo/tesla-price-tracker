@@ -83,12 +83,13 @@ def get_data():
     # Sort records based on purchase price and odometer 
     car_info = sorted(car_info, key=lambda x: (x['purchase_price'], x['odometer']))
     min_price = min(car_info, key=lambda x: x['purchase_price'])['purchase_price']
-    [print(x) for x in car_info if x['purchase_price'] == min_price]
+    # [print(x) for x in car_info if x['purchase_price'] == min_price]
 
     # Select only the cheapest cars
     cheapest = []
     for car in car_info:
         if car['purchase_price'] == min_price:
+            print(car)
             cheapest.append(car)
 
     # Write out results
